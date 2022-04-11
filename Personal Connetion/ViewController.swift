@@ -49,6 +49,21 @@ class ViewController: UIViewController
         super.viewDidLoad()
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+    //    let nextViewController = segue.destination as! When_Button_is_Pressed_Controller
+        
+//        let randomNumber = Int.random(in: 1...3)
+        
+        
+//        if segue.identifier == "redDwarf"
+//        {
+//            nextViewController.starName = "redDwarf\(randomNumber)"
+//        }
+//        else
+//        {
+//            nextViewController.starName = "blueDwarf\(randomNumber)"
+//        }
+    }
 }
 
