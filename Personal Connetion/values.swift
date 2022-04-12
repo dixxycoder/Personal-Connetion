@@ -16,3 +16,13 @@ class Values
         self.name = name
     }
 }
+
+class Biases
+{
+    var name: String
+    
+    init(name:String)
+    {
+        self.name = name
+    }
+}

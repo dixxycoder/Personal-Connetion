@@ -7,48 +7,64 @@
 
 import UIKit
 
-class When_Button_is_Pressed_Controller: UIViewController
+class When_Button_is_Pressed_Controller: UIViewController,UITableViewDataSource
 {
-//    @IBOutlet weak var tableView: UITableView!
-//
-//    @IBOutlet weak var newItem: UITextField!
-//
-//    var values : [Values] = []
-//
-//    override func viewDidLoad()
-//    {
-//        super.viewDidLoad()
-//        tableView.dataSource = self
-//
-//        let value1 = Values(name:"")
-//        let value2 = Values(name:"")
-//        values = [value1,value2]
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-//    {
-//        return items.count
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-//    {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
-//        let currentItem = items[indexPath.row]
-//        cell.textLabel?.text = currentItem.name
-//        return cell
-//    }
-//
-//    @IBAction func whenAddItemButtonPressed(_ sender: Any)
-//    {
-//        if let newItemName = newItem.text
-//        {
-//            let newItem = Item(name: newItemName)
-//            items.append(newItem)
-//            tableView.reloadData()
-//        }
-//    }
-//
-//
+    
+//  for the value part.
+    @IBOutlet weak var valueTable: UITableView!
+    @IBOutlet weak var newValue: UITextField!
+
+//  for the biases part.
+    @IBOutlet weak var biasesTable: UITableView!
+    @IBOutlet weak var newBiases: UITextField!
+    
+    var values : [Values] = []
+    var biases : [Biases] = []
+
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        valueTable.dataSource = self
+        
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return values.count
+    }
+
+//MARK: VALUES
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let valuesCell = tableView.dequeueReusableCell(withIdentifier: "valueTableView", for: indexPath)
+        let currentValue = values[indexPath.row]
+        valuesCell.textLabel?.text = currentValue.name
+        return valuesCell
+   
+    let biasesCell = tableView.dequeueReusableCell(withIdentifier: "biasesTableView", for: indexPath)
+    let currentBiases = biases[indexPath.row]
+    biasesCell.textLabel?.text = currentBiases.name
+    return biasesCell
+    }
+    
+    @IBAction func whenAddItemButtonPressed(_ sender: Any)
+    {
+        if let newValuesName = newValue.text
+        {
+            let newValue = Values(name: newValuesName)
+            values.append(newValue)
+            valueTable.reloadData()
+        }
+    }
+
+    @IBAction func whenAddBiasesBottonPressed(_ sender: Any)
+    {
+        if let newBiasesName = newBiases.text
+        {
+            let newBiases = Biases(name: newBiasesName)
+            biases.append(newBiases)
+            biasesTable.reloadData()
+        }
+    }
+    
 }
