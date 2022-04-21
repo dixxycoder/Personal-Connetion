@@ -17,6 +17,8 @@ class Values
     }
 }
 
+import Foundation
+
 class Biases
 {
     var name: String

@@ -28,6 +28,7 @@ class When_Button_is_Pressed_Controller: UIViewController,UITableViewDataSource
     {
         super.viewDidLoad()
         valueTable.dataSource = self
+        biasesTable.dataSource = self
     }
 
     
@@ -40,8 +41,8 @@ class When_Button_is_Pressed_Controller: UIViewController,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "valueTableView", for: indexPath)
-        var currentValue = values[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "valueTableView", for: indexPath)
+        let currentValue = values[indexPath.row]
         cell.textLabel?.text = currentValue.name
         return cell
     }
@@ -53,12 +54,12 @@ class When_Button_is_Pressed_Controller: UIViewController,UITableViewDataSource
         return biases.count
     }
     
-        func biases(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-        {
-    var cell = tableView.dequeueReusableCell(withIdentifier: "biasesTableView", for: indexPath)
-    var currentBiases = biases[indexPath.row]
+    func biasesView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "biasesTableView", for: indexPath)
+        let currentBiases = biases[indexPath.row]
         cell.textLabel?.text = currentBiases.name
-    return cell
+        return cell
     }
     
     
@@ -73,6 +74,7 @@ class When_Button_is_Pressed_Controller: UIViewController,UITableViewDataSource
         }
     }
 
+    
 //  biases button
     @IBAction func whenAddBiasesBottonPressed(_ sender: Any)
     {
