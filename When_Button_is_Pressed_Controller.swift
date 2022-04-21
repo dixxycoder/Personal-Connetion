@@ -10,43 +10,59 @@ import UIKit
 class When_Button_is_Pressed_Controller: UIViewController,UITableViewDataSource
 {
     
-//  for the value part.
+//  for the value outlets.
     @IBOutlet weak var valueTable: UITableView!
     @IBOutlet weak var newValue: UITextField!
 
-//  for the biases part.
+    
+//  for the biases outlets.
     @IBOutlet weak var biasesTable: UITableView!
     @IBOutlet weak var newBiases: UITextField!
+    
     
     var values : [Values] = []
     var biases : [Biases] = []
 
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         valueTable.dataSource = self
-        
     }
 
+    
+    //MARK: VALUES
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return values.count
     }
 
-//MARK: VALUES
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let valuesCell = tableView.dequeueReusableCell(withIdentifier: "valueTableView", for: indexPath)
-        let currentValue = values[indexPath.row]
-        valuesCell.textLabel?.text = currentValue.name
-        return valuesCell
-   
-    let biasesCell = tableView.dequeueReusableCell(withIdentifier: "biasesTableView", for: indexPath)
-    let currentBiases = biases[indexPath.row]
-    biasesCell.textLabel?.text = currentBiases.name
-    return biasesCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "valueTableView", for: indexPath)
+        var currentValue = values[indexPath.row]
+        cell.textLabel?.text = currentValue.name
+        return cell
+    }
+        
+    
+//MARK: BIASES
+    func biasesView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return biases.count
     }
     
+        func biases(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+        {
+    var cell = tableView.dequeueReusableCell(withIdentifier: "biasesTableView", for: indexPath)
+    var currentBiases = biases[indexPath.row]
+        cell.textLabel?.text = currentBiases.name
+    return cell
+    }
+    
+    
+//  values button
     @IBAction func whenAddItemButtonPressed(_ sender: Any)
     {
         if let newValuesName = newValue.text
@@ -57,6 +73,7 @@ class When_Button_is_Pressed_Controller: UIViewController,UITableViewDataSource
         }
     }
 
+//  biases button
     @IBAction func whenAddBiasesBottonPressed(_ sender: Any)
     {
         if let newBiasesName = newBiases.text
