@@ -39,6 +39,7 @@ class When_Button_is_Pressed_Controller: UIViewController , UITableViewDelegate 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         var numberOfRow = 1
+        
         switch tableView
         {
             case valueTable:
@@ -57,8 +58,17 @@ class When_Button_is_Pressed_Controller: UIViewController , UITableViewDelegate 
 //MARK: VALUES & BIASES PART 2
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        var v1 = newValue.text ?? ""
+        var Value1 = String (v1)
+        
+        var b1 = newBiases.text ?? ""
+        var Biase1 = String (b1)
+        
+        
         let cell = UITableViewCell()
-        switch tableView{
+        
+        switch tableView
+        {
 
     case valueTable:
         let cell = tableView.dequeueReusableCell(withIdentifier: "valueTableView", for: indexPath)
@@ -77,10 +87,10 @@ class When_Button_is_Pressed_Controller: UIViewController , UITableViewDelegate 
         }
         
         return cell
+        
     }
     
 //MARK: Add values
-    
     @IBAction func addValues(_ sender: Any)
     {
     
@@ -94,7 +104,6 @@ class When_Button_is_Pressed_Controller: UIViewController , UITableViewDelegate 
 
     
 //MARK: Add biases
-    
     @IBAction func addBiases(_ sender: Any)
     {
     
