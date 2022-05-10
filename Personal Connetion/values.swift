@@ -28,3 +28,17 @@ class Biases
         self.name = name
     }
 }
+    
+    
+import Foundation
+    
+    class Objective
+    {
+        var name: String
+        
+        init(name:String)
+        {
+            self.name = name
+        }
+    }
+

@@ -87,7 +87,6 @@ class When_Button_is_Pressed_Controller: UIViewController , UITableViewDelegate 
         }
         
         return cell
-        
     }
     
 //MARK: Add values

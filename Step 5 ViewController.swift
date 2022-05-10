@@ -7,23 +7,46 @@
 
 import UIKit
 
-class Step_5_ViewController: UIViewController {
-
-    override func viewDidLoad() {
+class Step_5_ViewController: UIViewController , UITableViewDelegate , UITableViewDataSource
+{
+    @IBOutlet weak var objectiveTable: UITableView!
+    @IBOutlet weak var newObjective: UITextField!
+    
+    var objective : [Objective] = []
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+        objectiveTable.dataSource = self
+        
+    }
 
-        // Do any additional setup after loading the view.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return objective.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "objectiveTableView", for: indexPath)
+        let currentItem = objective[indexPath.row]
+        cell.textLabel?.text = currentItem.name
+        return cell
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addObjective(_ sender: Any)
+    {
+        if let newObjectiveName = newObjective.text
+        {
+            let newObjective = Objective(name: newObjectiveName)
+            objective.append(newObjective)
+            objectiveTable.reloadData()
+        }
     }
-    */
+    
 
 }
